@@ -15,8 +15,6 @@ class Solution:
             l+= 1
             r -= 1
         return True
-        
-
    
         '''
         while L < R:
@@ -56,6 +54,5 @@ def test():
         result = solution.isPalindrome(input_str)
         print(f"real: {result} exp: {expected}")
 
-# Run tests
 if __name__ == "__main__":
     test()
