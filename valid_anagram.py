@@ -25,5 +25,4 @@ class Solution:
         for value in char_count.values():
             if value != 0:
                 return False  # If any count is non-zero, it's NOT an anagram
-
         return True  # If all counts are zero, it's an anagram
