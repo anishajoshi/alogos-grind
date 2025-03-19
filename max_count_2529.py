@@ -3,14 +3,30 @@ from typing import List
 
 class Solution:
     def maximumCount(self, nums: List[int]) -> int:
-        first_positive = bisect.bisect_left(nums, 1)
-        print("First positive index:", first_positive)
-        first_negative = bisect.bisect_right(nums, -1)
-        print("First negative index:", first_negative)
+        n = len(nums)
+        
+        # Binary search for the first positive number (> 0)
+        lo, hi = 0, n
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] > 0:
+                hi = mid
+            else:
+                lo = mid + 1
+        pos_count = n - lo
 
-        neg_count = last_negative
-        pos_count = len(nums) - first_positive
-        return max(neg_count, pos_count)
+        # Binary search for the first non-negative number (>= 0)
+        lo, hi = 0, n
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] < 0:
+                lo = mid + 1
+            else:
+                hi = mid
+        neg_count = lo
+
+        return max(pos_count, neg_count)
+
 
 solution = Solution()
 solution.maximumCount([-3, -2, -1, 0, 0, 1, 2, 3])
